@@ -1,4 +1,4 @@
-import { loadInput } from "../utils";
+import { loadInput, toInt } from "../utils";
 import _ from "lodash";
 
 const TARGET_SUM = 2020;
@@ -14,7 +14,7 @@ export function day1() {
 }
 
 function parseInput(input: string) {
-    return input.split("\n").map((x: string) => parseInt(x, 10));
+    return input.split("\n").map(toInt);
 }
 
 export function part1(numbers: number[], target: number) {

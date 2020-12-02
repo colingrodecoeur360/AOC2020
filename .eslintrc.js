@@ -30,6 +30,7 @@ module.exports = {
         "no-unused-expressions": "error",
         "no-unused-vars": ["error", { args: "after-used" }],
         "no-shadow": "error",
+        "object-curly-spacing": ["error", "always"],
         "semi": ["error", "always"],
 
         // import
