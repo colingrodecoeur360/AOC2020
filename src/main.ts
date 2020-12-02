@@ -1,3 +1,8 @@
-import { example } from "./example";
+import { displaySolutions } from "./utils";
+import { day1 } from "./day1";
+import { day2 } from "./day2";
 
-example();
+displaySolutions({
+    1: day1(),
+    2: day2(),
+});

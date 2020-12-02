@@ -5,8 +5,10 @@ export function day2() {
     const rows = parseInput(input);
 
     const validators = buildValidators();
-    console.log(countValidPasswords(rows, validators.part1));
-    console.log(countValidPasswords(rows, validators.part2));
+    return {
+        part1: () => countValidPasswords(rows, validators.part1),
+        part2: () => countValidPasswords(rows, validators.part2)
+    };
 }
 
 function parseInput(input: string) {

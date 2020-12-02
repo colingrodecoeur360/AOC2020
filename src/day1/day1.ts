@@ -7,8 +7,10 @@ export function day1() {
     const input = loadInput("day1");
     const numbers = parseInput(input);
 
-    console.log(part1(numbers, TARGET_SUM));
-    console.log(part2(numbers, TARGET_SUM));
+    return {
+        part1: () => part1(numbers, TARGET_SUM),
+        part2: () => part2(numbers, TARGET_SUM)
+    };
 }
 
 function parseInput(input: string) {
