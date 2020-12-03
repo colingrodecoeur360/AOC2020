@@ -1,7 +1,7 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-export function loadInput(folder: string) {
-    const filePath = path.resolve(__dirname, `../${folder}/input.txt`);
+export function loadInput(folder: string, { filename = "input" }: { filename?: string } = {}) {
+    const filePath = path.resolve(__dirname, `../${folder}/${filename}.txt`);
     return fs.readFileSync(filePath, { encoding: "utf8" });
 }
