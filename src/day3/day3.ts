@@ -101,7 +101,7 @@ interface Cell {
     value: "." | "#";
 }
 export interface Slope {
-    right : number;
+    right: number;
     down: number;
 }
 interface Position {
