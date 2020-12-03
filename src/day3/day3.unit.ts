@@ -10,7 +10,7 @@ describe("day3", () => {
 
     describe("part1", () => {
         beforeEach(() => {
-            slope = { right: 3, down : 1 };
+            slope = { right: 3, down: 1 };
             gridExplorer = buildGridExplorer(grid, slope);
         });
 

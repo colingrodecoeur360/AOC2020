@@ -33,11 +33,11 @@ function part1(grid: Grid) {
 
 function part2(grid: Grid) {
     const slopes = [
-        { right : 1, down: 1 },
-        { right : 3, down: 1 },
-        { right : 5, down: 1 },
-        { right : 7, down: 1 },
-        { right : 1, down: 2 }
+        { right: 1, down: 1 },
+        { right: 3, down: 1 },
+        { right: 5, down: 1 },
+        { right: 7, down: 1 },
+        { right: 1, down: 2 }
     ];
     let product = 1;
     slopes.forEach(slope => {
