@@ -1,6 +1,6 @@
 import { expect } from "@test/unit";
 import { loadInput } from "../utils";
-import {computeAnswerCountByQuestion, parseInput, part1, part2} from "./day6";
+import { computeAnswerCountByQuestion, parseInput, part1, part2 } from "./day6";
 
 describe("day6", () => {
     const testInput = loadInput("day6", { filename: "testInput" });
