@@ -32,9 +32,9 @@ export function parseInput(input: string) {
             return { color, content: null };
         }
         const content: Content = [];
-        const options = end.split(", ");
-        options.forEach((option) => {
-            const [value, color1, color2, ] = option.split(" ");
+        const bags = end.split(", ");
+        bags.forEach((bag) => {
+            const [value, color1, color2, ] = bag.split(" ");
             content.push({
                 color: [color1, color2].join(" "),
                 value: toInt(value)
@@ -45,26 +45,26 @@ export function parseInput(input: string) {
 }
 
 export function part1(contentByColor: ContentByColor) {
-    const parentColorsMap = buildParentColorsMap();
+    const parentColorMap = buildParentColorMap();
     const ancestorColorSet = new Set<string>();
-    addParentColorsToSet(COLOR_SHINY_GOLD, ancestorColorSet);
+    addParentColorsToSet(COLOR_SHINY_GOLD, ancestorColorSet, parentColorMap);
     return ancestorColorSet.size;
 
-    function buildParentColorsMap() {
-        const map: Record<string, string[]> = {};
+    function buildParentColorMap() {
+        const colorMap: Record<string, string[]> = {};
         Object.entries(contentByColor).forEach(([parentColor, content]) => {
             if (content === null) { return; }
             content.forEach(({ color }) => {
-                map[color] = [...(map[color] || []), parentColor];
+                colorMap[color] = [...(colorMap[color] || []), parentColor];
             });
         });
-        return map;
+        return colorMap;
     }
-    function addParentColorsToSet(color: string, set: Set<string>) {
-        if (! parentColorsMap[color]) { return; }
-        parentColorsMap[color].forEach((parentColor) => {
+    function addParentColorsToSet(color: string, ancestorSet: Set<string>, colorMap: Record<string, string[]>) {
+        if (! colorMap[color]) { return; }
+        colorMap[color].forEach((parentColor) => {
             ancestorColorSet.add(parentColor);
-            addParentColorsToSet(parentColor, set);
+            addParentColorsToSet(parentColor, ancestorSet, colorMap);
         });
     }
 }
