@@ -17,4 +17,4 @@ displaySolutions({
     6: day6(),
     7: day7(),
     8: day8()
-});
+}, { latest: true });
