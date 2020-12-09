@@ -1,20 +1,16 @@
-import { loadInput, toInt } from "../utils";
+import { loadInput, splitIntegerLines } from "../utils";
 import _ from "lodash";
 
 const TARGET_SUM = 2020;
 
 export function day1() {
     const input = loadInput("day1");
-    const numbers = parseInput(input);
+    const numbers = splitIntegerLines(input);
 
     return {
         part1: () => part1(numbers, TARGET_SUM),
         part2: () => part2(numbers, TARGET_SUM)
     };
-}
-
-function parseInput(input: string) {
-    return input.split("\n").map(toInt);
 }
 
 export function part1(numbers: number[], target: number) {

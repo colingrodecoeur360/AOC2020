@@ -1,4 +1,4 @@
-import { loadInput } from "../utils";
+import { loadInput, splitParagraphs } from "../utils";
 import _ from "lodash";
 
 export function day6() {
@@ -12,8 +12,8 @@ export function day6() {
 }
 
 export function parseInput(input: string) {
-    return input.trim().split("\n\n").map((answers) => {
-        return answers.replace(/\n/g, " ").split(" ");
+    return splitParagraphs(input).map((answers) => {
+        return answers.split("\n");
     });
 }
 

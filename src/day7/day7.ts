@@ -1,4 +1,4 @@
-import { loadInput, toInt } from "../utils";
+import { loadInput, splitLines, toInt } from "../utils";
 import _ from "lodash";
 
 const COLOR_SHINY_GOLD = "shiny gold";
@@ -17,7 +17,7 @@ type Content = null | { value: number, color: string }[];
 type ContentByColor = Record<string, Content>;
 
 export function parseInput(input: string) {
-    const lines = input.trim().split("\n");
+    const lines = splitLines(input);
     const contentByColor: ContentByColor = {};
     lines.forEach((line) => {
         const { color, content } = parseLine(line);

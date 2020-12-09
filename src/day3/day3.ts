@@ -1,4 +1,4 @@
-import { loadInput } from "../utils";
+import { loadInput, splitLines } from "../utils";
 
 export function day3() {
     const input = loadInput("day3");
@@ -11,7 +11,7 @@ export function day3() {
 }
 
 export function buildGrid(input: string): Grid {
-    const lines: string[] = input.trim().split("\n");
+    const lines: string[] = splitLines(input);
     const rows: Row[] = lines.map((line) => {
         return {
             cells: Array.from(line).map(value => ({ value } as Cell))

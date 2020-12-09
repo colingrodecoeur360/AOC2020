@@ -1,9 +1,9 @@
-import { loadInput } from "../utils";
+import { loadInput, splitLines } from "../utils";
 import { buildProgram } from "./Program";
 
 export function day8() {
     const input = loadInput("day8");
-    const rawInstructions = parseInput(input);
+    const rawInstructions = splitLines(input);
 
     return {
         part1: () => part1(rawInstructions),
@@ -12,7 +12,7 @@ export function day8() {
 }
 
 export function parseInput(input: string) {
-    return input.trim().split("\n");
+    return splitLines(input);
 }
 
 export function part1(rawInstructions: string[]) {

@@ -1,9 +1,9 @@
-import { loadInput } from "../utils";
+import { loadInput, splitLines } from "../utils";
 import _ from "lodash";
 
 export function day5() {
     const input = loadInput("day5");
-    const boardingPasses = parseInput(input);
+    const boardingPasses = splitLines(input) as BoardingPass[];
 
     return {
         part1: () => part1(boardingPasses),
@@ -16,10 +16,6 @@ type Mapper = Record<string, 0 | 1>;
 
 const ROW_MAPPER: Mapper = { F: 0, B: 1 };
 const COLUMN_MAPPER: Mapper = { L: 0, R: 1 };
-
-function parseInput(input: string): BoardingPass[] {
-    return input.split("\n");
-}
 
 function part1(boardingPasses: BoardingPass[]) {
     return _.max(boardingPasses.map(getSeatId));

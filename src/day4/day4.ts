@@ -1,4 +1,4 @@
-import { loadInput, isBetween, isNDigitNumber } from "../utils";
+import { loadInput, isBetween, isNDigitNumber, splitParagraphs } from "../utils";
 
 export function day4() {
     const input = loadInput("day4");
@@ -13,7 +13,7 @@ export function day4() {
 const PASSPORT_KEYS = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"];
 
 export function parseInput(input: string): Passport[] {
-    const passportDtos = input.split("\n\n").map((passport) => {
+    const passportDtos = splitParagraphs(input).map((passport) => {
         return passport.replace(/\n/g, " ").split(" ");
     });
     return passportDtos.map(buildPassport);

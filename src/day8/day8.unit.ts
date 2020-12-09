@@ -1,11 +1,11 @@
 import { expect } from "@test/unit";
-import { part1, part2, parseInput } from "./day8";
-import { loadInput } from "../utils";
+import { part1, part2 } from "./day8";
+import { loadInput, splitLines } from "../utils";
 
 
 describe("day8", () => {
     const testInput = loadInput("day8", { filename: "testInput" });
-    const rawInstructions = parseInput(testInput);
+    const rawInstructions = splitLines(testInput);
 
     describe("part1", () => {
         it("should return the value of the accumulator when reaching an already visited instruction", () => {

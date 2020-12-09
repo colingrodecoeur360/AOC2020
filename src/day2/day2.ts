@@ -1,18 +1,14 @@
-import { loadInput, toInt } from "../utils";
+import { loadInput, splitLines, toInt } from "../utils";
 
 export function day2() {
     const input = loadInput("day2");
-    const rows = parseInput(input);
+    const rows = splitLines(input);
 
     const validators = buildValidators();
     return {
         part1: () => countValidPasswords(rows, validators.part1),
         part2: () => countValidPasswords(rows, validators.part2)
     };
-}
-
-function parseInput(input: string) {
-    return input.trim().split("\n");
 }
 
 export function buildValidators() {
