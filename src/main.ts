@@ -8,6 +8,7 @@ import { day6 } from "./day6";
 import { day7 } from "./day7";
 import { day8 } from "./day8";
 import { day9 } from "./day9";
+import { day10 } from "./day10";
 
 displaySolutions({
     1: day1(),
@@ -18,5 +19,6 @@ displaySolutions({
     6: day6(),
     7: day7(),
     8: day8(),
-    9: day9()
+    9: day9(),
+    10: day10()
 }, { latest: true });
