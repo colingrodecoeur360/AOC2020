@@ -46,5 +46,9 @@ export const solutions: Record<string, { part1?: number; part2?: number }> = {
     12: {
         part1: 2280,
         part2: 38693
+    },
+    13: {
+        part1: 205,
+        part2: 803025030761664
     }
 };
