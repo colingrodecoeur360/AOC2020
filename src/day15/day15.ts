@@ -4,7 +4,6 @@ import _ from "lodash";
 export function day15() {
     const input = loadInput("day15");
     const numbers = parseInput(input);
-    console.log(numbers);
 
     return {
         part1: () => part1(numbers),
