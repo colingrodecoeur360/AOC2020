@@ -1,8 +1,6 @@
 import { expect } from "@test/unit";
 import { loadInput } from "../utils";
-import { parseInput } from "./day17";
-import { part1 } from "./part1";
-import { part2 } from "./part2";
+import { parseInput, part1, part2 } from "./day17";
 
 describe("day17", () => {
     describe("part1", () => {
