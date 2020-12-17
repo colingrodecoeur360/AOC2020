@@ -30,16 +30,16 @@ export function part1(grid: Grid) {
 
     function buildInitializer() {
         return (_grid: Grid) => {
-            const values = new Set<string>();
+            const activeCells = new Set<string>();
             for (let i = 0; i < _grid.length; i++) {
                 for (let j = 0; j < _grid.length; j++) {
                     const key = JSON.stringify([i, j, 0]);
                     if (_grid[i][j] === "#") {
-                        values.add(key);
+                        activeCells.add(key);
                     }
                 }
             }
-            return values;
+            return activeCells;
         };
     }
     function buildNeighborGetter() {
@@ -70,16 +70,16 @@ export function part2(grid: Grid) {
 
     function buildInitializer() {
         return (_grid: Grid) => {
-            const values = new Set<string>();
+            const activeCells = new Set<string>();
             for (let i = 0; i < _grid.length; i++) {
                 for (let j = 0; j < _grid.length; j++) {
                     const key = JSON.stringify([i, j, 0, 0]);
                     if (_grid[i][j] === "#") {
-                        values.add(key);
+                        activeCells.add(key);
                     }
                 }
             }
-            return values;
+            return activeCells;
         };
     }
     function buildNeighborGetter() {
