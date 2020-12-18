@@ -10,3 +10,9 @@ export function isNDigitNumber(value: string, n: number) {
 export function isBetween(value: string, min: number, max: number) {
     return min <= toInt(value) && toInt(value) <= max;
 }
+
+export function multiply(numbers: number[]) {
+    let result = 1;
+    numbers.forEach(number => result *= number);
+    return result;
+}
