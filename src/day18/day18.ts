@@ -19,7 +19,7 @@ export function part1(expressions: string[]) {
     const { evaluate } = buildExpressionEvaluator(buildBaseEvaluator());
     return _.sum(expressions.map(evaluate));
 
-    function buildBaseEvaluator() {
+    function buildBaseEvaluator(): Evaluator {
         return {
             evaluate(expression: string) {
                 const tokens = expression.split(" ");
@@ -67,7 +67,7 @@ interface Evaluator {
     evaluate(expression: string): number;
 }
 
-function buildExpressionEvaluator(baseEvaluator: Evaluator) {
+function buildExpressionEvaluator(baseEvaluator: Evaluator): Evaluator {
     return { evaluate };
 
     function evaluate(expression: string): number {
