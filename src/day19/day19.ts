@@ -3,11 +3,11 @@ import _ from "lodash";
 
 export function day19() {
     const input = loadInput("day19");
-    const { rules, messages } = parseInput(input);
+    const { rulesByIndex, messages } = parseInput(input);
 
     return {
-        part1: () => part1(rules, messages),
-        part2: () => part2(rules, messages)
+        part1: () => part1(rulesByIndex, messages),
+        part2: () => part2(rulesByIndex, messages)
     };
 }
 
@@ -25,17 +25,17 @@ type Rule = ConstantRule | NestedRule;
 
 export function parseInput(input: string) {
     const [rawRules, rawMessages] = splitParagraphs(input);
-    const rules: Record<string, Rule> = {};
+    const rulesByIndex: Record<string, Rule> = {};
     splitLines(rawRules).forEach((rawRule) => {
         const [index, ruleDTO] = rawRule.split(": ");
         if (ruleDTO.includes('"')) {
-            rules[index] = {
+            rulesByIndex[index] = {
                 index,
                 type: "constant",
                 value: ruleDTO[1]
             };
         } else {
-            rules[index] = {
+            rulesByIndex[index] = {
                 index,
                 type: "nested",
                 subRules: ruleDTO.split(" | ").map(subRule => subRule.split(" "))
@@ -43,13 +43,13 @@ export function parseInput(input: string) {
         }
     });
     return {
-        rules,
+        rulesByIndex,
         messages: splitLines(rawMessages)
     };
 }
 
-export function part1(rules: Record<string, Rule>, messages: string[]) {
-    const regex = new RegExp(`^${buildRegex(rules[0])}$`, "g");
+export function part1(rulesByIndex: Record<string, Rule>, messages: string[]) {
+    const regex = new RegExp(`^${buildRegex(rulesByIndex[0])}$`, "g");
     return messages.filter(message => message.match(regex)).length;
 
     function buildRegex(rule: Rule): string {
@@ -58,23 +58,23 @@ export function part1(rules: Record<string, Rule>, messages: string[]) {
         throw new Error("Invalid rule");
 
         function buildSubRegex(subRule: string[]) {
-            return subRule.map(value => buildRegex(rules[value])).join("");
+            return subRule.map(ruleIndex => buildRegex(rulesByIndex[ruleIndex])).join("");
         }
     }
 }
 
-export function part2(rules: Record<string, Rule>, messages: string[]) {
-    const regex = new RegExp(`^${buildRegex(rules[0])}$`, "g");
+export function part2(rulesByIndex: Record<string, Rule>, messages: string[]) {
+    const regex = new RegExp(`^${buildRegex(rulesByIndex[0])}$`, "g");
     return messages.filter(message => message.match(regex)).length;
 
     function buildRegex(rule: Rule): string {
         if (rule.type === "constant") { return rule.value; }
         if (rule.type === "nested") {
             if (rule.index === "8") {
-                return `(${buildRegex(rules[42])}+)`;
+                return `(${buildRegex(rulesByIndex[42])}+)`;
             } else if (rule.index === "11") {
-                const regex42 = `(${buildRegex(rules[42])})`;
-                const regex31 = `(${buildRegex(rules[31])})`;
+                const regex42 = `(${buildRegex(rulesByIndex[42])})`;
+                const regex31 = `(${buildRegex(rulesByIndex[31])})`;
 
                 let subRegex = `${_.repeat(regex42, 1)}${_.repeat(regex31, 1)}`;
                 subRegex += `|${_.repeat(regex42, 2)}${_.repeat(regex31, 2)}`;
@@ -88,7 +88,7 @@ export function part2(rules: Record<string, Rule>, messages: string[]) {
         throw new Error("Invalid rule");
 
         function buildSubRegex(subRule: string[]) {
-            return subRule.map(value => buildRegex(rules[value])).join("");
+            return subRule.map(ruleIndex => buildRegex(rulesByIndex[ruleIndex])).join("");
         }
     }
 }
