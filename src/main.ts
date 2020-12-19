@@ -17,6 +17,7 @@ import { day15 } from "./day15";
 import { day16 } from "./day16";
 import { day17 } from "./day17";
 import { day18 } from "./day18";
+import { day19 } from "./day19";
 
 displaySolutions({
     1: day01(),
@@ -37,4 +38,5 @@ displaySolutions({
     16: day16(),
     17: day17(),
     18: day18(),
+    19: day19(),
 }, { latest: true });
