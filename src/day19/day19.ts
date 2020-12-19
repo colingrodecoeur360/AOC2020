@@ -1,5 +1,4 @@
 import { loadInput, splitLines, splitParagraphs } from "../utils";
-import _ from "lodash";
 
 export function day19() {
     const input = loadInput("day19");
@@ -76,10 +75,10 @@ export function part2(rulesByIndex: Record<string, Rule>, messages: string[]) {
                 const regex42 = `(${buildRegex(rulesByIndex[42])})`;
                 const regex31 = `(${buildRegex(rulesByIndex[31])})`;
 
-                let subRegex = `${_.repeat(regex42, 1)}${_.repeat(regex31, 1)}`;
-                subRegex += `|${_.repeat(regex42, 2)}${_.repeat(regex31, 2)}`;
-                subRegex += `|${_.repeat(regex42, 3)}${_.repeat(regex31, 3)}`;
-                subRegex += `|${_.repeat(regex42, 4)}${_.repeat(regex31, 4)}`;
+                let subRegex = `${regex42}${regex31}`;
+                subRegex += `|${regex42.repeat(2)}${regex31.repeat(2)}`;
+                subRegex += `|${regex42.repeat(3)}${regex31.repeat(3)}`;
+                subRegex += `|${regex42.repeat(4)}${regex31.repeat(4)}`;
                 return `(${subRegex})`;
             } else {
                 return `(${rule.subRules.map(buildSubRegex).join("|")})`;
