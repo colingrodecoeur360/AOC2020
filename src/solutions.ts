@@ -82,5 +82,9 @@ export const solutions: Record<string, { part1?: number; part2?: number | string
     21: {
         part1: 1815,
         part2: "kllgt,jrnqx,ljvx,zxstb,gnbxs,mhtc,hfdxb,hbfnkq"
+    },
+    22: {
+        part1: 31629,
+        part2: 35196
     }
 };
