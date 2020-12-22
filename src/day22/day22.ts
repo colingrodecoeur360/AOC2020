@@ -42,7 +42,8 @@ export function parseInput(input: string) {
     };
 }
 
-export function part1(game: Game) {
+export function part1(_game: Game) {
+    const game = _.cloneDeep(_game);
     while (! Hand.isEmpty(game.p1) && ! Hand.isEmpty(game.p2)) {
         const c1 = game.p1.shift()!;
         const c2 = game.p2.shift()!;
@@ -72,7 +73,8 @@ export function part2(_game: Game) {
             const c1 = game.p1.shift()!;
             const c2 = game.p2.shift()!;
 
-            if (computeWinner(game, c1, c2) === "p1") {
+            const winner = computeWinner(game, c1, c2);
+            if (winner === "p1") {
                 game.p1.push(c1, c2);
             } else {
                 game.p2.push(c2, c1);
