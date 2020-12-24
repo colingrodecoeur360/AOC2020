@@ -90,5 +90,9 @@ export const solutions: Record<string, { part1?: number; part2?: number | string
     23: {
         part1: 98752463,
         part2: 2000455861
+    },
+    24: {
+        part1: 373,
+        part2: 3917
     }
 };
